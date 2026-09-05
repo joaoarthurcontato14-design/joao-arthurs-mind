@@ -60,3 +60,101 @@ label input,label textarea{margin-top:7px;color:var(--ink)}
 .admin-body{min-height:100vh}.admin-wrap{max-width:900px;margin:0 auto;padding:45px 20px 80px}.admin-card{width:100%;box-shadow:none}.admin-title-row{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:25px}.admin-card hr{border:0;border-top:1px solid var(--line);margin:35px 0}.admin-post-row{border-top:1px solid var(--line);padding:16px 0}.admin-post-row small{color:var(--muted)}
 .desktop-forced .layout{max-width:1200px;grid-template-columns:minmax(0,1fr) 285px}.desktop-forced .main-column{min-width:650px}
 @media(max-width:800px){.layout{display:block;padding:32px 18px 70px}.sidebar{display:none}.month-mobile{display:block}.feed-head{display:block}.feed-head select{margin-top:20px;width:100%}.post{padding:25px 0}.two-cols{grid-template-columns:1fr}.topbar{padding:0 18px}.desktop-forced .layout{display:grid;grid-template-columns:minmax(650px,1fr) 285px;min-width:980px}.desktop-forced{overflow-x:auto}.desktop-forced .sidebar{display:block}.desktop-forced .month-mobile{display:none}}
+/* =========================================================
+   CONTADOR E MARCAS DAS ESTRELAS
+========================================================= */
+
+.post-footer {
+  flex-wrap: wrap;
+}
+
+.star-btn {
+  transition:
+    transform .15s ease,
+    background .2s ease,
+    border-color .2s ease;
+}
+
+.star-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(255,255,255,.07);
+}
+
+.star-btn:active {
+  transform: scale(.94);
+}
+
+.star-btn:disabled {
+  cursor: pointer;
+  opacity: .85;
+}
+
+.star-number {
+  display: inline-block;
+  min-width: 18px;
+  text-align: left;
+  margin-left: 3px;
+}
+
+.star-total-label {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: .3px;
+}
+
+.star-milestone-area {
+  margin-top: 9px;
+  max-width: 420px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.star-next {
+  margin-bottom: 7px;
+}
+
+.star-next strong {
+  color: var(--ink);
+  font-weight: normal;
+}
+
+.star-milestone.reached {
+  color: var(--ink);
+  letter-spacing: .5px;
+  animation: milestonePop .5s ease;
+}
+
+@keyframes milestonePop {
+
+  0% {
+    opacity: 0;
+    transform: translateY(4px) scale(.97);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translateY(-1px) scale(1.02);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+}
+
+.star-progress {
+  width: 100%;
+  max-width: 300px;
+  height: 3px;
+  background: rgba(238,243,248,.09);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.star-progress-bar {
+  height: 100%;
+  background: rgba(238,243,248,.65);
+  border-radius: 99px;
+  transition: width .25s ease;
+}
