@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#27364D">
+  <title>João Arthur's Mind</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <div id="loadingScreen" class="loading-screen" aria-label="Carregando">
+    <div class="stars" id="loadingStars"></div>
+    <div class="loading-content">
+      <div id="writingName" class="writing-name"></div>
+      <div id="loadingSiteName" class="loading-site-name">João Arthur's Mind</div>
+    </div>
+  </div>
+
+  <header class="topbar">
+    <a class="brand" href="index.html">João Arthur's Mind</a>
+    <button id="settingsBtn" class="icon-btn" aria-label="Configurações">⚙</button>
+  </header>
+
+  <div class="layout">
+    <main class="main-column">
+      <div class="feed-head">
+        <div>
+          <p class="eyebrow">MEU BLOG</p>
+          <h1> pensamentos, histórias e coisas que eu quero guardar.</h1>
+        </div>
+        <select id="sortSelect" aria-label="Ordenar posts">
+          <option value="newest">Mais recentes</option>
+          <option value="oldest">Mais antigos</option>
+          <option value="stars">Mais relevantes</option>
+        </select>
+      </div>
+
+      <div id="monthMobile" class="month-mobile"></div>
+      <section id="posts" class="posts" aria-live="polite"></section>
+      <div id="emptyState" class="empty hidden">
+        <div class="empty-star">✦</div>
+        <p>Nenhuma postagem encontrada aqui.</p>
+      </div>
+    </main>
+
+    <aside class="sidebar">
+      <div class="side-card">
+        <p class="eyebrow">ARQUIVO</p>
+        <h2>Meses</h2>
+        <div id="archive"></div>
+      </div>
+      <div class="side-card small-card">
+        <p>um lugar para deixar minhas ideias existirem.</p>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-line">
+      <span>João Arthur's Mind</span>
+      <span>✦</span>
+      <button id="ownerBtn" class="owner-btn">João Arthur</button>
+      <button id="settingsFooterBtn" class="link-btn">Configurações</button>
+    </div>
+    <div class="credits">feito por João Arthur &amp; ChatGPT</div>
+  </footer>
+
+  <div id="settingsModal" class="modal hidden">
+    <div class="modal-box">
+      <button class="close-btn" data-close="settingsModal">×</button>
+      <p class="eyebrow">CONFIGURAÇÕES</p>
+      <h2>Do meu jeito.</h2>
+      <label>Tamanho do texto
+        <input id="fontRange" type="range" min="90" max="125" value="100">
+      </label>
+      <label class="switch-row">
+        <span>Visualização de computador</span>
+        <input id="desktopMode" type="checkbox">
+      </label>
+      <p class="settings-note">As configurações ficam salvas somente neste navegador.</p>
+      <p class="settings-credits">Créditos: João Arthur + ChatGPT</p>
+    </div>
+  </div>
+
+  <div id="ownerModal" class="modal hidden">
+    <div class="modal-box login-box">
+      <button class="close-btn" data-close="ownerModal">×</button>
+      <p class="eyebrow">ÁREA DO JOÃO ARTHUR</p>
+      <h2>Entrar</h2>
+      <form id="loginForm">
+        <label>E-mail
+          <input id="loginEmail" type="email" autocomplete="username" required>
+        </label>
+        <label>Senha
+          <input id="loginPassword" type="password" autocomplete="current-password" required>
+        </label>
+        <button class="primary-btn" type="submit">Entrar</button>
+        <button id="forgotPasswordBtn" class="link-btn" type="button">Esqueci a senha</button>
+        <p id="loginMessage" class="form-message"></p>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

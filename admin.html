@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#27364D">
+  <title>João Arthur's Mind — Administração</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="admin-body">
+  <header class="topbar">
+    <a class="brand" href="index.html">João Arthur's Mind</a>
+    <button id="logoutBtn" class="link-btn">Sair</button>
+  </header>
+
+  <main class="admin-wrap">
+    <section id="adminLogin" class="admin-card">
+      <p class="eyebrow">ÁREA PRIVADA</p>
+      <h1>Entrar no painel</h1>
+      <form id="adminLoginForm">
+        <label>E-mail<input id="adminEmail" type="email" required></label>
+        <label>Senha<input id="adminPassword" type="password" required></label>
+        <button class="primary-btn" type="submit">Entrar</button>
+        <p id="adminLoginMessage" class="form-message"></p>
+      </form>
+    </section>
+
+    <section id="adminPanel" class="admin-card hidden">
+      <div class="admin-title-row">
+        <div>
+          <p class="eyebrow">NOVO POST</p>
+          <h1>Escrever</h1>
+        </div>
+        <a class="link-btn" href="index.html">Ver blog</a>
+      </div>
+
+      <form id="postForm">
+        <label>Título (opcional)
+          <input id="postTitle" maxlength="180" placeholder="Um título, se quiser">
+        </label>
+        <label>Texto
+          <textarea id="postBody" maxlength="20000" rows="10" placeholder="Escreva aqui..."></textarea>
+        </label>
+
+        <div class="two-cols">
+          <label>Imagem
+            <input id="postImage" type="file" accept="image/*">
+          </label>
+          <label>Vídeo
+            <input id="postVideo" type="file" accept="video/*">
+          </label>
+        </div>
+
+        <label>Link (opcional)
+          <input id="postLink" type="url" placeholder="https://...">
+        </label>
+
+        <label>Publicar em
+          <input id="postDate" type="datetime-local">
+          <small>Deixe vazio para publicar agora. O horário é o do seu computador.</small>
+        </label>
+
+        <label class="switch-row">
+          <span>Mostrar contagem de estrelas</span>
+          <input id="showStars" type="checkbox" checked>
+        </label>
+
+        <button class="primary-btn" type="submit">Publicar / programar</button>
+        <p id="postMessage" class="form-message"></p>
+      </form>
+
+      <hr>
+
+      <p class="eyebrow">POSTAGENS</p>
+      <div id="adminPosts"></div>
+    </section>
+  </main>
+  <script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#27364D"><title>Nova senha — João Arthur's Mind</title><link rel="stylesheet" href="styles.css"><script src="config.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script></head>
+<body class="center-page"><main class="simple-card">
+<div class="big-star">✦</div><p class="eyebrow">JOÃO ARTHUR'S MIND</p><h1>Nova senha</h1>
+<form id="resetForm">
+<label>Nova senha<input id="newPassword" type="password" minlength="8" required></label>
+<label>Repita a senha<input id="newPassword2" type="password" minlength="8" required></label>
+<button class="primary-btn" type="submit">Salvar senha</button>
+<p id="resetMessage" class="form-message"></p>
+</form>
+</main>
+<script>
+const {createClient}=supabase;
+const client=createClient(window.APP_CONFIG.SUPABASE_URL,window.APP_CONFIG.SUPABASE_ANON_KEY);
+client.auth.onAuthStateChange(async(event,session)=>{
+  if(event==="PASSWORD_RECOVERY" && session){ window.__recoveryReady=true; }
+});
+document.getElementById("resetForm").addEventListener("submit",async(e)=>{
+ e.preventDefault();
+ const m=document.getElementById("resetMessage"),a=document.getElementById("newPassword").value,b=document.getElementById("newPassword2").value;
+ if(a!==b){m.textContent="As senhas não são iguais.";return;}
+ const {error}=await client.auth.updateUser({password:a});
+ if(error){m.textContent=error.message;return;}
+ m.textContent="Senha alterada. Você já pode voltar ao blog.";
+});
+</script></body></html>
